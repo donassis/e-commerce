@@ -1,0 +1,18 @@
+@startuml
+start
+:Buyer Adds Items to Cart;
+:Proceed to Checkout;
+:Enter Shipping Details;
+:Select Payment Method;
+:Confirm Order;
+if (Payment Successful?) then (Yes)
+    :Generate Order ID;
+    :Notify Seller;
+    :Prepare Order for Shipment;
+    :Update Order Status;
+else (No)
+    :Show Payment Error;
+    :Allow Retry;
+endif
+stop
+@enduml

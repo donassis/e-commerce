@@ -1,0 +1,23 @@
+@startuml
+package "User Management" {
+  [User Controller] --> [User Service]
+  [User Service] --> [User Repository]
+  [User Repository] --> [Database]
+}
+
+package "Authentication" {
+  [Auth Controller] --> [Auth Service]
+  [Auth Service] --> [User Repository]
+}
+
+note right of [User Controller]
+  Handles HTTP requests for
+  user registration, login,
+  and profile management.
+end note
+
+note right of [Auth Controller]
+  Handles authentication
+  and authorization.
+end note
+@enduml

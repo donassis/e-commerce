@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+@startuml
+state "Start" as start
+state "Enter Registration Details" as enterDetails
+state "Validate Details" as validateDetails
+state "Create Account" as createAccount
+state "Account Created" as accountCreated
+state "Error: Invalid Details" as error
+
+start --> enterDetails
+enterDetails --> validateDetails
+validateDetails --> createAccount : Valid
+validateDetails --> error : Invalid
+createAccount --> accountCreated
+error --> enterDetails
+@enduml
+
+}
+@enduml

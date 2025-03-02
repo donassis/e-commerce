@@ -1,0 +1,14 @@
+@startuml
+state "Start" as start
+state "Review User" as reviewUser
+state "Approve User" as approveUser
+state "Block User" as blockUser
+state "User Approved" as userApproved
+state "User Blocked" as userBlocked
+
+start --> reviewUser
+reviewUser --> approveUser : Approve
+reviewUser --> blockUser : Block
+approveUser --> userApproved
+blockUser --> userBlocked
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+actor Buyer
+participant "UI" as UI
+participant "Shopping Cart" as Cart
+participant "Payment Processing" as Payment
+participant "Order Management" as OrderMgmt
+participant "Database" as Database
+
+Buyer -> UI: Add Product to Cart
+UI -> Cart: Add Product
+Cart -> Database: Update Cart
+Buyer -> UI: Proceed to Checkout
+UI -> Payment: Process Payment
+Payment -> Database: Store Payment Details
+Payment -> OrderMgmt: Create Order
+OrderMgmt -> Database: Store Order Details
+OrderMgmt -> UI: Confirm Order
+UI -> Buyer: Order Confirmation
+@enduml

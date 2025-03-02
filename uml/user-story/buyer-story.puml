@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor Buyer
+
+rectangle "E-Commerce Platform" {
+    Buyer --> (Browse Products) : Can browse available products
+    Buyer --> (Search Products) : Can search for specific products
+    Buyer --> (Add to Cart) : Can add products to the shopping cart
+    Buyer --> (Checkout) : Can proceed to checkout
+    Buyer --> (Track Orders) : Can track order status
+    Buyer --> (Initiate Returns) : Can initiate returns for orders
+    Buyer --> (Make Payment) : Can make payments securely
+}
+
+note right of (Make Payment)
+  Payment is processed securely
+  via a payment gateway.
+end note
+
+@enduml

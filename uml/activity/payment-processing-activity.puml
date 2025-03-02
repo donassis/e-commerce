@@ -1,0 +1,20 @@
+@startuml
+start
+:User Selects Payment Method;
+:Enter Payment Details;
+:Submit Payment;
+if (Card Valid?) then (Yes)
+    :Process Payment;
+    if (Sufficient Balance?) then (Yes)
+        :Transaction Approved;
+        :Redirect to Order Confirmation;
+    else (No)
+        :Show Insufficient Funds Error;
+        :Allow Payment Retry;
+    endif
+else (No)
+    :Show Invalid Card Error;
+    :Request New Card Details;
+endif
+stop
+@enduml

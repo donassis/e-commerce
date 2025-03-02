@@ -1,0 +1,22 @@
+@startuml
+package "Product Management" {
+  HTTP - [Product Service]
+  HTTP - [Inventory Service]
+  HTTP - [Pricing Service]
+}
+
+database "Product Database" {
+  folder "Product Information" {
+    [Product Listings]
+    [Product Categories]
+  }
+  folder "Stock Management" {
+    [Inventory]
+  }
+}
+
+[Product Service] --> [Product Listings]
+[Product Service] --> [Inventory Service]
+[Inventory Service] --> [Inventory]
+[Pricing Service] --> [Product Listings]
+@enduml

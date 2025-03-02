@@ -1,0 +1,13 @@
+@startuml
+start
+:Admin Receives Request;
+:Review User/Product Details;
+if (Meets Requirements?) then (Yes)
+    :Approve Request;
+    :Notify User;
+else (No)
+    :Reject Request;
+    :Provide Rejection Reason;
+endif
+stop
+@enduml

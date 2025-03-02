@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+actor Seller
+
+rectangle "E-Commerce Platform" {
+    Seller --> (List Products) : Can list new products for sale
+    Seller --> (Edit Products) : Can edit existing product listings
+    Seller --> (Remove Products) : Can remove products from listings
+    Seller --> (View Sales Reports) : Can view sales reports
+    Seller --> (Manage Inventory) : Can manage product inventory
+}
+
+note right of (View Sales Reports)
+  Sellers can view detailed reports
+  on their sales and earnings.
+end note
+
+@enduml

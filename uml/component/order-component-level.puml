@@ -1,0 +1,24 @@
+@startuml
+package "Order Management" {
+  [Order Controller] --> [Order Service]
+  [Order Service] --> [Order Repository]
+  [Order Repository] --> [Database]
+}
+
+package "Payment Integration" {
+  [Payment Controller] --> [Payment Service]
+  [Payment Service] --> [Payment Gateway]
+}
+
+note right of [Order Controller]
+  Handles HTTP requests for
+  placing, tracking, and
+  returning orders.
+end note
+
+note right of [Payment Controller]
+  Handles payment processing
+  and communicates with the
+  Payment Gateway.
+end note
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+' Use Case Diagram
+left to right direction
+actor Buyer
+actor Seller
+actor Admin
+
+rectangle "E-Commerce System" {
+
+    (Login) <-- Admin
+    (Logout) <-- Admin
+    (Approve/Block Users) <-- Admin
+    (View User Information) <-- Admin
+    (Approve/Block Products) <-- Admin
+
+    (Login) <-- Seller
+    (Logout) <- Seller
+    (Add Product) <-- Seller
+    (Edit Product) <-- Seller
+    (Remove Product) <-- Seller
+
+    Buyer --> (Register)
+    Buyer --> (Login)
+    Buyer --> (Logout)
+    Buyer --> (Browse Products)
+    Buyer --> (Search Products)
+    Buyer --> (Add to Cart)
+    Buyer --> (Checkout)
+    Buyer --> (Track Order Status)
+    Buyer --> (Initiate Return)
+}
+
+@enduml

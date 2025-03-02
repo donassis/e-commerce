@@ -1,0 +1,13 @@
+@startuml
+package "Product Management" {
+  [Product Controller] --> [Product Service]
+  [Product Service] --> [Product Repository]
+  [Product Repository] --> [Database]
+}
+
+note right of [Product Controller]
+  Handles HTTP requests for
+  adding, editing, and
+  removing products.
+end note
+@enduml

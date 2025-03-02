@@ -1,0 +1,42 @@
+@startuml
+package "E-Commerce System" {
+  HTTP - [User Management]
+  HTTP - [Product Management]
+  HTTP - [Order Management]
+  HTTP - [Payment System]
+  HTTP - [Shipping & Delivery]
+  HTTP - [Admin Management]
+}
+
+node "External Services" {
+  FTP - [Payment Gateway]
+  FTP - [Third-Party Shipping API]
+  [Order Management] --> FTP
+}
+
+cloud {
+  [User Authentication]
+}
+
+database "Main Database" {
+  folder "User Data" {
+    [User Profiles]
+  }
+  folder "Order Data" {
+    [Orders]
+    [Cart Items]
+  }
+  folder "Product Data" {
+    [Product Listings]
+    [Inventory]
+  }
+}
+
+[User Management] --> [User Authentication]
+[User Authentication] --> [User Profiles]
+[Order Management] --> [Orders]
+[Orders] --> [Cart Items]
+[Product Management] --> [Product Listings]
+[Product Listings] --> [Inventory]
+
+@enduml

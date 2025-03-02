@@ -1,0 +1,24 @@
+@startuml
+package "Shipping & Delivery" {
+  HTTP - [Shipping Service]
+  HTTP - [Courier Management]
+  HTTP - [Tracking System]
+}
+
+node "Third-Party APIs" {
+  FTP - [External Shipping API]
+}
+
+database "Shipping Database" {
+  folder "Shipments" {
+    [Shipment Records]
+  }
+  folder "Tracking" {
+    [Tracking Data]
+  }
+}
+
+[Shipping Service] --> [Shipment Records]
+[Courier Management] --> [External Shipping API]
+[Tracking System] --> [Tracking Data]
+@enduml

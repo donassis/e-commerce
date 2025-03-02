@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+@startuml
+state "Start" as start
+state "Browse Products" as browseProducts
+state "Add to Cart" as addToCart
+state "Proceed to Checkout" as checkout
+state "Process Payment" as processPayment
+state "Order Confirmed" as orderConfirmed
+state "Payment Failed" as paymentFailed
+
+start --> browseProducts
+browseProducts --> addToCart
+addToCart --> checkout
+checkout --> processPayment
+processPayment --> orderConfirmed : Success
+processPayment --> paymentFailed : Failure
+paymentFailed --> checkout
+@enduml
+}
+@enduml

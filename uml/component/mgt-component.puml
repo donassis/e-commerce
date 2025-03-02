@@ -1,0 +1,23 @@
+@startuml
+package "User Management" {
+  HTTP - [User Service]
+  HTTP - [Authentication Service]
+  HTTP - [Role Management]
+}
+
+cloud {
+  [SSO Authentication]
+}
+
+database "User Database" {
+  folder "Account Info" {
+    [User Profiles]
+    [Roles]
+  }
+}
+
+[User Service] --> [Authentication Service]
+[Authentication Service] --> [SSO Authentication]
+[Authentication Service] --> [User Profiles]
+[Role Management] --> [Roles]
+@enduml

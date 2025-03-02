@@ -1,0 +1,16 @@
+@startuml
+start
+:User Browses Products;
+:Selects a Product;
+:Clicks "Add to Cart";
+if (Product Already in Cart?) then (Yes)
+    :Increase Quantity;
+else (No)
+    :Add New Product Entry;
+endif
+if (User Removes an Item?) then (Yes)
+    :Update Cart;
+endif
+:Proceed to Checkout;
+stop
+@enduml

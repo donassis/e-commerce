@@ -1,0 +1,42 @@
+@startuml
+package "Client" {
+  [Web Browser] ---> [API Gateway]
+  [Mobile App] ---> [API Gateway]
+}
+
+package "API Gateway" {
+  [API Gateway] --> [User Service]
+  [API Gateway] --> [Product Service]
+  [API Gateway] --> [Order Service]
+  [API Gateway] --> [Payment Service]
+}
+
+package "Microservices" {
+  [User Service] --> [Database]
+  [Order Service] --> [Database]
+  [Product Service] --> [Database]
+  [Payment Service] --> [Payment Gateway]
+}
+
+package "Database" {
+  [Database] --> [User Data]
+  [Database] --> [Product Data]
+  [Database] --> [Order Data]
+}
+
+package "External Systems" {
+  [Payment Gateway] --> [Bank API]
+}
+
+note right of [API Gateway]
+  The API Gateway routes requests
+  to the appropriate microservice.
+end note
+
+note right of [Payment Gateway]
+  Handles secure payment processing
+  and communicates with external
+  banking systems.
+end note
+
+@enduml

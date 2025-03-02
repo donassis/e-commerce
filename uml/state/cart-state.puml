@@ -1,0 +1,12 @@
+@startuml
+[*] ---> Empty
+Empty ---> AddingItems : User Selects Products
+AddingItems ---> Active : Items Added to Cart
+Active ---> Checkout : User Proceeds to Payment
+Checkout ---> OrderPlaced : Payment Successful
+Active --> RemovingItems : User Deletes Products
+RemovingItems --> Empty : Cart Becomes Empty
+Active --> Abandoned : User Leaves Without Checkout
+Abandoned --> Active : User Returns to Cart
+[*] <-- OrderPlaced
+@enduml
