@@ -1,0 +1,8 @@
+@startuml
+[*] --> LoggedOut
+LoggedOut --> LoggingIn : User Provides Credentials
+LoggingIn --> LoggedIn : Successful Authentication
+LoggingIn --> LoginFailed : Invalid Credentials
+LoginFailed --> LoggingIn : User Tries Again
+LoggedIn --> LoggedOut : User Logs Out
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+package "Admin Management" {
+  [Admin Controller] --> [Admin Service]
+  [Admin Service] --> [User Repository]
+  [Admin Service] --> [Product Repository]
+}
+
+note right of [Admin Controller]
+  Handles HTTP requests for
+  approving/blocking users
+  and products.
+end note
+@enduml

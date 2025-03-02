@@ -1,0 +1,13 @@
+@startuml
+[*] --> PendingApproval
+PendingApproval --> Approved : Admin Confirms
+PendingApproval --> Rejected : Admin Denies
+Approved --> Active : User/Product Becomes Available
+Rejected --> Appealed : Seller Requests Re-Evaluation
+Appealed --> ReApproved : Admin Reverses Decision
+Appealed --> PermanentlyRejected : Admin Confirms Denial
+Active --> Suspended : Admin Blocks User/Product
+Suspended --> Reactivated : Admin Restores
+Suspended --> Deleted : Admin Removes Permanently
+[*] <-- Active
+@enduml

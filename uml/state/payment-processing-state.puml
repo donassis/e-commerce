@@ -1,0 +1,9 @@
+@startuml
+[*] --> Initiated
+Initiated --> Processing : Payment Gateway Processing
+Processing --> Successful : Payment Confirmed
+Processing --> Failed : Insufficient Funds
+Successful --> Refunded : Refund Processed
+Failed --> Retried : User Attempts Again
+[*] <-- Successful
+@enduml

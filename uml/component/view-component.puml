@@ -1,0 +1,45 @@
+@startuml
+
+package "User Management" {
+    [User Authentication]
+    [Role Management]
+}
+
+package "Product Management" {
+    [Product Listing]
+    [Product Search]
+    [Shopping Cart]
+}
+
+package "Order Management" {
+    [Order Tracking]
+    [Order Returns]
+}
+
+package "Payment Processing" {
+    [Payment Gateway]
+    [Secure Transactions]
+}
+
+package "Admin Control" {
+    [User Approval]
+    [Product Approval]
+}
+
+' Define interactions between components
+[User Authentication] --> [Role Management]
+[User Authentication] --> [Product Listing] : Access Control
+[User Authentication] --> [Order Tracking] : User Orders
+[User Authentication] --> [Payment Gateway] : Process Payments
+
+[Product Listing] --> [Product Search]
+[Product Listing] --> [Shopping Cart]
+[Shopping Cart] --> [Secure Transactions]
+
+[Order Tracking] --> [Order Returns]
+[Order Tracking] --> [Secure Transactions]
+
+[Admin Control] --> [User Approval]
+[Admin Control] --> [Product Approval]
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+package "Admin Management" {
+  HTTP - [Admin Service]
+  HTTP - [User Moderation]
+  HTTP - [Product Moderation]
+}
+
+database "Admin Database" {
+  folder "Admin Actions" {
+    [User Approvals]
+    [Product Approvals]
+  }
+}
+
+[Admin Service] --> [User Moderation]
+[Admin Service] --> [Product Moderation]
+[User Moderation] --> [User Approvals]
+[Product Moderation] --> [Product Approvals]
+@enduml

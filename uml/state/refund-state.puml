@@ -1,0 +1,12 @@
+@startuml
+[*] --> NoRequest
+NoRequest --> ReturnInitiated : Buyer Requests Return
+ReturnInitiated --> AdminReview : Admin Evaluates Request
+AdminReview --> Approved : Return Accepted
+AdminReview --> Rejected : Return Denied
+Approved --> ShippedBack : Buyer Returns Item
+ShippedBack --> Inspected : Quality Check
+Inspected --> Refunded : Refund Issued
+Inspected --> Rejected : Return Denied
+[*] <-- Refunded
+@enduml

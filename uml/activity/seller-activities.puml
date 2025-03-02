@@ -1,0 +1,14 @@
+@startuml
+start
+:Enter Product Details;
+:Validate Product Details;
+if (Details Valid?) then (yes)
+  :Add Product to Catalog;
+  :Product Added;
+  stop
+else (no)
+  :Display Error Message;
+  :Return to Product Form;
+  stop
+endif
+@enduml

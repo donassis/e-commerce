@@ -1,0 +1,12 @@
+@startuml
+[*] --> Placed
+Placed --> Confirmed : Payment Verified
+Confirmed --> Shipped : Order Packed
+Shipped --> Delivered : Successfully Received
+Shipped --> Returned : Buyer Initiates Return
+Placed --> Cancelled : Buyer Cancels Order
+Confirmed --> Cancelled : Admin Cancels Order
+Cancelled --> Refunded : Refund Processed
+Returned --> Refunded : Return Approved
+[*] <-- Delivered
+@enduml

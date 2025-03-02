@@ -1,0 +1,86 @@
+@startuml
+
+class User {
+    +userId: int
+    +username: string
+    +password: string
+    +email: string
+    +role: string
+    +register(): void
+    +login(): void
+    +logout(): void
+}
+
+class Buyer {
+    +shoppingCart: ShoppingCart
+    +browseProducts(): void
+    +addToCart(product: Product): void
+    +checkout(): void
+    +trackOrder(orderId: int): void
+    +initiateReturn(orderId: int): void
+}
+
+class Seller {
+    +productList: List<Product>
+    +addProduct(product: Product): void
+    +editProduct(productId: int, updatedProduct: Product): void
+    +removeProduct(productId: int): void
+}
+
+class Admin {
+    +approveUser(userId: int): void
+    +blockUser(userId: int): void
+    +approveProduct(productId: int): void
+    +blockProduct(productId: int): void
+}
+
+class Product {
+    +productId: int
+    +name: string
+    +description: string
+    +price: float
+    +quantity: int
+    +getProductDetails(): string
+}
+
+class Order {
+    +orderId: int
+    +userId: int
+    +productId: int
+    +status: string
+    +paymentDetails: Payment
+    +placeOrder(): void
+    +trackOrder(): void
+    +returnOrder(): void
+}
+
+class Payment {
+    +paymentId: int
+    +userId: int
+    +amount: float
+    +paymentStatus: string
+    +processPayment(): void
+    +storePaymentDetails(): void
+}
+
+class ShoppingCart {
+    +cartId: int
+    +userId: int
+    +productList: List<Product>
+    +addProduct(product: Product): void
+    +removeProduct(productId: int): void
+}
+
+' Inheritance relationships
+User <|-- Admin
+User <|-- Buyer
+User <|-- Seller
+
+' Composition and Aggregation relationships
+Buyer "1" *-- "1" ShoppingCart : contains >
+Seller "1" o-- "0.*" Product : manages >
+Order "1" --> "1" Buyer : placed by >
+Order "1" --> "1.*" Product : includes >
+Payment "1" --> "1" Order : processes >
+
+@enduml

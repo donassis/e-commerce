@@ -1,0 +1,23 @@
+@startuml
+package "Payment System" {
+  HTTP - [Payment Service]
+  HTTP - [Refund Service]
+}
+
+node "External Payment Providers" {
+  FTP - [Payment Gateway]
+}
+
+database "Transaction Database" {
+  folder "Payments" {
+    [Payment Records]
+  }
+  folder "Refunds" {
+    [Refund Records]
+  }
+}
+
+[Payment Service] --> [Payment Gateway]
+[Payment Gateway] --> [Payment Records]
+[Refund Service] --> [Refund Records]
+@enduml

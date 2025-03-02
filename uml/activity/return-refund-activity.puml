@@ -1,0 +1,19 @@
+@startuml
+start
+:Buyer Requests Return;
+:Provide Reason & Upload Images;
+:Submit Request;
+if (Admin Approves Return?) then (Yes)
+    :Buyer Ships Item Back;
+    :Inspect Returned Product;
+    if (Product in Good Condition?) then (Yes)
+        :Issue Refund;
+    else (No)
+        :Reject Return;
+    endif
+else (No)
+    :Return Request Rejected;
+    :Notify Buyer;
+endif
+stop
+@enduml

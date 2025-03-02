@@ -1,0 +1,20 @@
+@startuml
+start
+:Order Confirmed;
+:Assign Courier;
+:Package Picked Up;
+:Update Tracking Status;
+:In Transit;
+if (Reached Destination?) then (Yes)
+    :Out for Delivery;
+    :Notify Customer;
+    if (Customer Available?) then (Yes)
+        :Mark Order as Delivered;
+    else (No)
+        :Reschedule Delivery;
+    endif
+else (No)
+    :Continue Tracking;
+endif
+stop
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+start
+:Seller Logs In;
+:Access Product Dashboard;
+if (Adding a Product?) then (Yes)
+    :Enter Product Details;
+    :Upload Images;
+    :Submit for Approval;
+    if (Admin Approves?) then (Yes)
+        :Product Goes Live;
+    else (No)
+        :Product Rejected;
+        :Notify Seller;
+    endif
+endif
+if (Editing a Product?) then (Yes)
+    :Modify Product Details;
+    :Submit Changes;
+    :Update Product Listing;
+endif
+if (Removing a Product?) then (Yes)
+    :Confirm Deletion;
+    :Remove Product;
+endif
+stop
+@enduml

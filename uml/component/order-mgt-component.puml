@@ -1,0 +1,20 @@
+@startuml
+package "Order Management" {
+  HTTP - [Shopping Cart Service]
+  HTTP - [Order Service]
+  HTTP - [Checkout Service]
+}
+
+database "Order Database" {
+  folder "Orders" {
+    [Order Records]
+  }
+  folder "Cart Info" {
+    [Cart Items]
+  }
+}
+
+[Shopping Cart Service] --> [Cart Items]
+[Order Service] --> [Order Records]
+[Checkout Service] --> [Order Service]
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+start
+:User Opens Platform;
+if (Has Account?) then (No)
+    :Fill Registration Form;
+    :Submit Registration;
+    if (Validation Passes?) then (Yes)
+        :Account Created;
+    else (No)
+        :Show Error Message;
+    endif
+endif
+:Enter Login Credentials;
+:Submit Login Request;
+if (Credentials Valid?) then (Yes)
+    :Redirect to Dashboard;
+else (No)
+    :Show Login Error;
+    :Allow Retry;
+endif
+stop
+@enduml

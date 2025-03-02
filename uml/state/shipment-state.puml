@@ -1,0 +1,12 @@
+@startuml
+[*] --> OrderPacked
+OrderPacked --> Dispatched : Sent to Courier
+Dispatched --> InTransit : Moving to Destination
+InTransit --> OutForDelivery : Reached Local Hub
+OutForDelivery --> Delivered : Successfully Received
+OutForDelivery --> FailedDelivery : Recipient Unavailable
+FailedDelivery --> ReattemptedDelivery : Rescheduled
+FailedDelivery --> ReturnedToSeller : Return Processed
+ReturnedToSeller --> Refunded : Customer Reimbursed
+[*] <-- Delivered
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+[*] --> Draft
+Draft --> PendingApproval : Seller Submits Product
+PendingApproval --> Approved : Admin Approves
+PendingApproval --> Rejected : Admin Rejects
+Approved --> ListedForSale : Seller Publishes Product
+ListedForSale --> OutOfStock : Stock Depletes
+OutOfStock --> Restocked : Seller Updates Inventory
+ListedForSale --> Discontinued : Seller Removes Product
+Discontinued --> Deleted : Admin Permanently Deletes
+@enduml
