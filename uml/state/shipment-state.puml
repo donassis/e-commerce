@@ -1,4 +1,6 @@
 @startuml
+header Shipment State
+footer Created by OD153
 [*] --> OrderPacked
 OrderPacked --> Dispatched : Sent to Courier
 Dispatched --> InTransit : Moving to Destination

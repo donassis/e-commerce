@@ -1,4 +1,6 @@
 @startuml
+header Cart State
+footer Created by OD153
 [*] ---> Empty
 Empty ---> AddingItems : User Selects Products
 AddingItems ---> Active : Items Added to Cart

@@ -1,4 +1,6 @@
 @startuml
+header User Component
+footer Created by OD153
 package "User Management" {
   [User Controller] --> [User Service]
   [User Service] --> [User Repository]

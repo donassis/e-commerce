@@ -1,4 +1,6 @@
 @startuml
+header Order Management Component
+footer Created by OD153
 package "Order Management" {
   HTTP - [Shopping Cart Service]
   HTTP - [Order Service]

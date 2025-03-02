@@ -1,4 +1,6 @@
 @startuml
+header Product Component
+footer Created by OD153
 package "Product Management" {
   [Product Controller] --> [Product Service]
   [Product Service] --> [Product Repository]

@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/use-case-diagram
 ' Use Case Diagram
+header Use Case
+footer Created by OD153
 left to right direction
 actor Buyer
 actor Seller

@@ -1,4 +1,6 @@
 @startuml
+header Payment System Component
+footer Created by OD153
 package "Payment System" {
   HTTP - [Payment Service]
   HTTP - [Refund Service]

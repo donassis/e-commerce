@@ -1,4 +1,6 @@
 @startuml
+header Order State
+footer Created by OD153
 [*] --> Placed
 Placed --> Confirmed : Payment Verified
 Confirmed --> Shipped : Order Packed

@@ -1,4 +1,6 @@
 @startuml
+header Admin State
+footer Created by OD153
 [*] --> PendingApproval
 PendingApproval --> Approved : Admin Confirms
 PendingApproval --> Rejected : Admin Denies

@@ -1,4 +1,6 @@
 @startuml
+header Admin Component
+footer Created by OD153
 package "Admin Management" {
   [Admin Controller] --> [Admin Service]
   [Admin Service] --> [User Repository]

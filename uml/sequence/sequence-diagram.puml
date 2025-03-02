@@ -1,4 +1,6 @@
 @startuml
+header Sequence Diagram
+footer Created by OD153
 actor Buyer
 participant "UI" as UI
 participant "Shopping Cart" as Cart

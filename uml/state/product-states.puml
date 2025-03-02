@@ -1,7 +1,6 @@
 @startuml
-'https://plantuml.com/state-diagram
-
-@startuml
+header Product State
+footer Created by OD153
 state "Start" as start
 state "Browse Products" as browseProducts
 state "Add to Cart" as addToCart
@@ -17,6 +16,4 @@ checkout --> processPayment
 processPayment --> orderConfirmed : Success
 processPayment --> paymentFailed : Failure
 paymentFailed --> checkout
-@enduml
-}
 @enduml

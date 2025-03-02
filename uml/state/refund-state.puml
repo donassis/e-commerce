@@ -1,4 +1,6 @@
 @startuml
+header Refund State
+footer Created by OD153
 [*] --> NoRequest
 NoRequest --> ReturnInitiated : Buyer Requests Return
 ReturnInitiated --> AdminReview : Admin Evaluates Request

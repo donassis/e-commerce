@@ -1,4 +1,6 @@
 @startuml
+header Product Management Activity
+footer Created by OD153
 start
 :Seller Logs In;
 :Access Product Dashboard;

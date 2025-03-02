@@ -1,4 +1,6 @@
 @startuml
+header System Component
+footer Created by OD153
 package "E-Commerce System" {
   HTTP - [User Management]
   HTTP - [Product Management]

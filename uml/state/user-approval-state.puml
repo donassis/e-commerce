@@ -1,4 +1,6 @@
 @startuml
+header User Approval State
+footer Created by OD153
 state "Start" as start
 state "Review User" as reviewUser
 state "Approve User" as approveUser

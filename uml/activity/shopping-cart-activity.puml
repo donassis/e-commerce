@@ -1,4 +1,6 @@
 @startuml
+header Shopping Cart Activity
+footer Created by OD153
 start
 :User Browses Products;
 :Selects a Product;

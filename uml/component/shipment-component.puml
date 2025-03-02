@@ -1,4 +1,6 @@
 @startuml
+header Shipment Component
+footer Created by OD153
 package "Shipping & Delivery" {
   HTTP - [Shipping Service]
   HTTP - [Courier Management]

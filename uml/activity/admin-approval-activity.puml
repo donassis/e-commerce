@@ -1,5 +1,9 @@
 @startuml
+
+header Admin Approval Activity
+footer Created by OD153
 start
+
 :Admin Receives Request;
 :Review User/Product Details;
 if (Meets Requirements?) then (Yes)

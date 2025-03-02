@@ -1,4 +1,6 @@
 @startuml
+header User Registration Activity
+footer Created by OD153
 start
 :User Opens Platform;
 if (Has Account?) then (No)

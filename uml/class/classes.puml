@@ -1,5 +1,6 @@
 @startuml
-
+header Classes
+footer Created by OD153
 class User {
     +userId: int
     +username: string

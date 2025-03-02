@@ -1,4 +1,8 @@
 @startuml
+
+header Admin Approval Activity
+footer Created by OD153
+
 start
 :Buyer Adds Items to Cart;
 :Proceed to Checkout;

@@ -1,4 +1,6 @@
 @startuml
+header Seller Activity
+footer Created by OD153
 start
 :Enter Product Details;
 :Validate Product Details;

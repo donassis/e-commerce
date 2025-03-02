@@ -1,4 +1,6 @@
 @startuml
+header Management Component
+footer Created by OD153
 package "User Management" {
   HTTP - [User Service]
   HTTP - [Authentication Service]

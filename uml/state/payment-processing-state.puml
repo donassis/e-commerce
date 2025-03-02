@@ -1,4 +1,6 @@
 @startuml
+header Payment Processing State
+footer Created by OD153
 [*] --> Initiated
 Initiated --> Processing : Payment Gateway Processing
 Processing --> Successful : Payment Confirmed

@@ -1,4 +1,6 @@
 @startuml
+header Architecture Design
+footer Created by OD153
 package "Client" {
   [Web Browser] ---> [API Gateway]
   [Mobile App] ---> [API Gateway]

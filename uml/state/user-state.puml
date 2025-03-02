@@ -1,7 +1,7 @@
-@startuml
-'https://plantuml.com/state-diagram
 
 @startuml
+header User State
+footer Created by OD153
 state "Start" as start
 state "Enter Registration Details" as enterDetails
 state "Validate Details" as validateDetails
@@ -15,7 +15,4 @@ validateDetails --> createAccount : Valid
 validateDetails --> error : Invalid
 createAccount --> accountCreated
 error --> enterDetails
-@enduml
-
-}
 @enduml

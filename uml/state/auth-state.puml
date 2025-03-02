@@ -1,4 +1,6 @@
 @startuml
+header Authentication State
+footer Created by OD153
 [*] --> LoggedOut
 LoggedOut --> LoggingIn : User Provides Credentials
 LoggingIn --> LoggedIn : Successful Authentication

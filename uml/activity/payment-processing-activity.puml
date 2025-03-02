@@ -1,4 +1,12 @@
 @startuml
+
+header Payment Processing Activity
+footer Created by OD153
+
+legend left
+Order states transition based on customer and system actions.
+end legend
+
 start
 :User Selects Payment Method;
 :Enter Payment Details;

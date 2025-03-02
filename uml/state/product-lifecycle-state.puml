@@ -1,4 +1,6 @@
 @startuml
+header Product Lifecycle State
+footer Created by OD153
 [*] --> Draft
 Draft --> PendingApproval : Seller Submits Product
 PendingApproval --> Approved : Admin Approves
