@@ -26,6 +26,13 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Verify Jest Installation
+        run: npm list jest || echo "Jest is not installed"
+
+      - name: Install Jest (if missing)
+        run: npm install --save-dev jest
+        if: failure()
+
       - name: Run Linting
         run: npm run lint
 
