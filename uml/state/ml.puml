@@ -1,0 +1,36 @@
+@startuml
+title Proactive Solver System with ML-based Parameter Prediction
+
+actor User
+
+node "State of the World Engine (Service)" as StateEngine {
+  database "World State Data"
+}
+
+node "ML Agent (Service)" as MLAI {
+  database "Trained Model"
+}
+
+node "Proactive Solver (Service)" as Solver {
+  database "Solver Decisions"
+}
+
+node "Config UI (Reactive)" as ReactiveSolver {
+  database "Historical Config Data"
+}
+
+StateEngine --> MLAI : Provides World State Data
+ReactiveSolver --> MLAI : Supplies Historical Solver Data
+MLAI --> MLAI : Trains Model on Past Data
+MLAI --> Solver : Predicts Optimal Solver Parameters
+Solver --> Solver : Executes Optimization
+Solver --> User : Returns Optimized Solution
+
+' Error Handling
+MLAI --> Solver : Model Confidence Low? (Use Default Parameters)
+
+' Feedback Loop
+Solver --> MLAI : Sends Performance Metrics
+MLAI --> MLAI : Retrains Model
+
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+title Real-Time Interaction in Proactive Solver System
+
+actor User
+
+participant "State of the World Engine (Service)" as StateEngine
+participant "ML Agent (Service)" as MLAI
+participant "Proactive Solver (Service)" as Solver
+participant "Reactive Solver (Existing System)" as ReactiveSolver
+participant "Monitoring & Logging Service" as Monitor
+
+User -> Solver : Request Optimization
+Solver -> StateEngine : Fetch World State Data
+StateEngine -> Solver : Send State Data
+Solver -> MLAI : Request Predicted Parameters
+
+alt Missing or Incomplete Data
+    Solver -> StateEngine : Retry or Use Fallback Data
+end
+
+MLAI -> ReactiveSolver : Fetch Historical Data
+ReactiveSolver -> MLAI : Return Historical Data
+MLAI -> MLAI : Process & Train Model
+
+alt Model Confidence Low
+    MLAI -> Solver : Use Default Parameters
+else Prediction Confident
+    MLAI -> Solver : Send Predicted Parameters
+end
+
+Solver -> Solver : Execute Optimization
+Solver -> User : Return Optimized Solution
+
+alt Solver Performance Feedback
+    Solver -> MLAI : Send Performance Metrics
+    MLAI -> MLAI : Retrain Model with New Data
+end
+
+Solver -> Monitor : Log Optimization Performance
+MLAI -> Monitor : Log Model Accuracy & Performance
+Monitor -> User : Display System Performance Dashboard
+
+legend right
+==== Challenges & Considerations ====
+1️⃣ **Uncertainty in World State Data**
+   - Not sure how the "State of the World" will be structured.
+   - Need reliable data sources for real-time updates.
+
+2️⃣ **Predictive Power of Historical Data**
+   - The accuracy of ML predictions depends on the quality & variety of past solver configurations.
+   - Data bias or outdated patterns can lead to suboptimal decisions.
+
+3️⃣ **Fallback Mechanism for Low ML Confidence**
+   - If the ML agent cannot confidently predict parameters, it must fall back to:
+     - Default solver parameters.
+     - A rule-based approach.
+
+4️⃣ **Ensuring Continuous Model Improvement**
+   - The solver needs to **send feedback** to improve future ML predictions.
+   - Regular retraining is required to adapt to changing conditions.
+
+5️⃣ **Monitoring & Debugging Complexity**
+   - Need robust logging & dashboards to track system behavior.
+   - Alerts should trigger when solver performance drops unexpectedly.
+
+end legend
+
+@enduml
