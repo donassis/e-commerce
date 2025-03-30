@@ -43,6 +43,8 @@ jobs:
         run: npm test
 
       - name: Build Project
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: npm run build
 
 #  deploy:
