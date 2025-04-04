@@ -4,7 +4,7 @@ import {
     CartSchema,
     UserInputSchema,
     UserSignInSchema,
-    UserSignUpSchema, ShippingAddressSchema, ReviewInputSchema, UserNameSchema
+    UserSignUpSchema, ShippingAddressSchema, ReviewInputSchema, UserNameSchema, OrderInputSchema
 } from '@/lib/validator'
 import {z} from 'zod'
 
@@ -39,7 +39,7 @@ export type IReviewDetails = IReviewInput & {
         name: string
     }
 }
-export type IOrderInput = z.infer<typeof OrderItemSchema>
+export type IOrderInput = z.infer<typeof OrderInputSchema>
 export type IOrderList = IOrderInput & {
     _id: string
     user: {
