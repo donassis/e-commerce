@@ -12,11 +12,15 @@ import CheckoutFooter from "@/app/checkout/checkout-footer";
 import {redirect, useRouter} from 'next/navigation'
 import {Button} from '@/components/ui/button'
 import ProductPrice from '@/components/shared/product/product-price'
+import {loadStripe} from "@stripe/stripe-js";
+import StripeForm from "@/app/checkout/[id]/stripe-form";
+import {Elements} from "@stripe/react-stripe-js";
 
-export default function OrderDetailsForm({order, paypalClientId,}: {
+export default function OrderDetailsForm({order, paypalClientId, clientSecret}: {
     order: IOrder,
     paypalClientId: string,
-    isAdmin: boolean
+    isAdmin: boolean,
+    clientSecret: string | null
 }) {
     const router = useRouter()
     const {
@@ -157,6 +161,21 @@ export default function OrderDetailsForm({order, paypalClientId,}: {
                                 </PayPalScriptProvider>
                             </div>
                         )}
+
+                        {!isPaid && paymentMethod === 'Stripe' && clientSecret && (
+                            <Elements
+                                options={{
+                                    clientSecret,
+                                }}
+                                stripe={stripePromise}
+                            >
+                                <StripeForm
+                                    priceInCents={Math.round(order.totalPrice * 100)}
+                                    orderId={order._id}
+                                />
+                            </Elements>
+                        )}
+
                         {!isPaid && paymentMethod === 'Cash On Delivery' && (
                             <Button
                                 className='w-full rounded-full'
@@ -171,6 +190,8 @@ export default function OrderDetailsForm({order, paypalClientId,}: {
         </Card>
     )
 
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
+
     return (
         <main className='max-w-6xl mx-auto'>
             <div className='grid md:grid-cols-4 gap-6'>
@@ -183,8 +204,8 @@ export default function OrderDetailsForm({order, paypalClientId,}: {
                             </div>
                             <div className='col-span-5'>
                                 <p>
-                                    {shippingAddress.fullName} <br />
-                                    {shippingAddress.street} <br />
+                                    {shippingAddress.fullName} <br/>
+                                    {shippingAddress.street} <br/>
                                     {`${shippingAddress.city}, ${shippingAddress.province}, ${shippingAddress.postalCode}, ${shippingAddress.country}`}
                                 </p>
                             </div>
@@ -226,16 +247,16 @@ export default function OrderDetailsForm({order, paypalClientId,}: {
 
                             {/* Mobile Checkout Summary */}
                             <div className='block md:hidden'>
-                                <CheckoutSummary />
+                                <CheckoutSummary/>
                             </div>
 
                             {/* Checkout Footer */}
-                            <CheckoutFooter />
+                            <CheckoutFooter/>
                         </div>
 
                         {/* Desktop Checkout Summary */}
                         <div className='hidden md:block'>
-                            <CheckoutSummary />
+                            <CheckoutSummary/>
                         </div>
                     </div>
                 </div>
