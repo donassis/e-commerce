@@ -1,15 +1,15 @@
 'use server'
 
 import mongoose from 'mongoose'
-import { revalidatePath } from 'next/cache'
+import {revalidatePath} from 'next/cache'
 
-import { auth } from '@/auth'
+import {auth} from '@/auth'
 
-import { connectToDatabase } from '../db'
+import {connectToDatabase} from '../db'
 import Product from '../db/models/product.model'
-import Review, { IReview } from '../db/models/review.model'
-import { formatError } from '../utils'
-import { ReviewInputSchema } from '../validator'
+import Review, {IReview} from '../db/models/review.model'
+import {formatError} from '../utils'
+import {ReviewInputSchema} from '../validator'
 import {IReviewDetails, IReviewInput} from '@/types'
 import {PAGE_SIZE} from "@/lib/constants";
 
@@ -68,28 +68,28 @@ export async function createUpdateReview({
 const updateProductReview = async (productId: string) => {
     // Calculate the new average rating, number of reviews, and rating distribution
     const result = await Review.aggregate([
-        { $match: { product: new mongoose.Types.ObjectId(productId) } },
+        {$match: {product: new mongoose.Types.ObjectId(productId)}},
         {
             $group: {
                 _id: '$rating',
-                count: { $sum: 1 },
+                count: {$sum: 1},
             },
         },
     ])
     // Calculate the total number of reviews and average rating
-    const totalReviews = result.reduce((sum, { count }) => sum + count, 0)
+    const totalReviews = result.reduce((sum, {count}) => sum + count, 0)
     const avgRating =
-        result.reduce((sum, { _id, count }) => sum + _id * count, 0) / totalReviews
+        result.reduce((sum, {_id, count}) => sum + _id * count, 0) / totalReviews
 
     // Convert aggregation result to a map for easier lookup
-    const ratingMap = result.reduce((map, { _id, count }) => {
+    const ratingMap = result.reduce((map, {_id, count}) => {
         map[_id] = count
         return map
     }, {})
     // Ensure all ratings 1-5 are represented, with missing ones set to count: 0
     const ratingDistribution = []
     for (let i = 1; i <= 5; i++) {
-        ratingDistribution.push({ rating: i, count: ratingMap[i] || 0 })
+        ratingDistribution.push({rating: i, count: ratingMap[i] || 0})
     }
     // Update product fields with calculated values
     await Product.findByIdAndUpdate(productId, {
@@ -112,14 +112,14 @@ export async function getReviews({
     limit = limit || PAGE_SIZE
     await connectToDatabase()
     const skipAmount = (page - 1) * limit
-    const reviews = await Review.find({ product: productId })
+    const reviews = await Review.find({product: productId})
         .populate('user', 'name')
         .sort({
             createdAt: 'desc',
         })
         .skip(skipAmount)
         .limit(limit)
-    const reviewsCount = await Review.countDocuments({ product: productId })
+    const reviewsCount = await Review.countDocuments({product: productId})
     return {
         data: JSON.parse(JSON.stringify(reviews)) as IReviewDetails[],
         totalPages: reviewsCount === 0 ? 1 : Math.ceil(reviewsCount / limit),
