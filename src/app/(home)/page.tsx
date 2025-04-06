@@ -9,9 +9,9 @@ import { Card, CardContent } from '@/components/ui/card'
 
 export default async function Page() {
     const categories = (await getAllCategories()).slice(0, 4)
-    const newArrivals = await getProductsForCard({tag: 'new-arrivals', limit: 4})
+    const newArrivals = await getProductsForCard({tag: 'new-arrival', limit: 4})
     const featured = await getProductsForCard({tag: 'featured', limit: 4})
-    const bestSellers = await getProductsForCard({tag: 'best-sellers', limit: 4})
+    const bestSellers = await getProductsForCard({tag: 'best-seller', limit: 4})
 
     const todaysDeals = await getProductsByTag({tag: 'todays-deal'})
     const bestSellingProducts = await getProductsByTag({tag: 'best-seller'})
