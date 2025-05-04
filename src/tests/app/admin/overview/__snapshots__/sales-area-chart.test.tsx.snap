@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SalesAreaChart Component matches snapshot with sample data 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="responsive-container"
+  >
+    <div
+      data-testid="area-chart"
+    >
+      <div
+        data-testid="cartesian-grid"
+      />
+      <div
+        data-testid="x-axis"
+      />
+      <div
+        data-testid="y-axis"
+      />
+      <div
+        data-testid="tooltip"
+      />
+      <div
+        data-testid="area"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
