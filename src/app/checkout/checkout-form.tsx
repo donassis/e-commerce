@@ -611,11 +611,11 @@ const CheckoutForm = () => {
                                                     <ul>
                                                         <RadioGroup
                                                             value={
-                                                                AVAILABLE_PAYMENT_METHODS[deliveryDateIndex!].name
+                                                                AVAILABLE_DELIVERY_DATES[deliveryDateIndex!].name
                                                             }
                                                             onValueChange={(value) =>
                                                                 setDeliveryDateIndex(
-                                                                    AVAILABLE_PAYMENT_METHODS.findIndex(
+                                                                    AVAILABLE_DELIVERY_DATES.findIndex(
                                                                         (address) => address.name === value
                                                                     )!
                                                                 )

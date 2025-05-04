@@ -72,6 +72,23 @@ const users: IUserInput[] = [
         emailVerified: false,
     },
     {
+        name: 'Alice',
+        email: 'alice@example.com',
+        password: bcrypt.hashSync('123456', 5),
+        role: 'Seller',
+        address: {
+            fullName: 'Alice Smith',
+            street: '4 Main St',
+            city: 'New York',
+            province: 'NY',
+            postalCode: '1005',
+            country: 'USA',
+            phone: '123-852-9890',
+        },
+        paymentMethod: 'Cash On Delivery',
+        emailVerified: false,
+    },
+    {
         name: 'Michael',
         email: 'michael@example.com',
         password: bcrypt.hashSync('123456', 5),

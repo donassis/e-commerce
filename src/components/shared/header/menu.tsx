@@ -10,8 +10,6 @@ import {
 import CartButton from './cart-button'
 import UserButton from './user-button'
 import ThemeSwitcher from './theme-switcher'
-// import LanguageSwitcher from './language-switcher'
-// import { useTranslations } from 'next-intl'
 
 const Menu = ({ forAdmin = false }: { forAdmin?: boolean }) => {
    // const t = useTranslations()
